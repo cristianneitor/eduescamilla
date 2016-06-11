@@ -1,0 +1,15 @@
+Application\Entity\Album:
+  type: entity
+  table: album
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    artist:
+      type: string
+      length: 100
+    title:
+      type: string
+      length: 100
