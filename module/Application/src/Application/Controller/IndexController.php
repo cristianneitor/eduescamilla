@@ -20,9 +20,17 @@ class IndexController extends AbstractActionController
     
     public function indexAction()
     {
-        return new ViewModel(array(
-            'albums' => $this->getEntityManager()->getRepository('Application\Entity\Album')->findAll(),
-        ));
+        $viewModel = new ViewModel();
+        
+        try {
+            $albumEntity = $this->getEntityManager()->getRepository('Application\Entity\Album');
+            $albums = $albumEntity->findAll();
+            $viewModel->setVariable('albums', $albums);
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+        
+        return $viewModel;
     }
     
     public function addAction()
