@@ -47,7 +47,7 @@ class IndexController extends AbstractActionController
                 $this->getEntityManager()->persist($album);
                 $this->getEntityManager()->flush();
                 // Redirect to list of albums
-                return $this->redirect()->toRoute('album');
+                return $this->redirect()->toRoute('home');
             }
         }
         
