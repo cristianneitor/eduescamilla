@@ -40,10 +40,11 @@ class IndexController extends AbstractActionController
         $request = $this->getRequest();
         if ($request->isPost()) {
             $album = new Album();
-            $form->setInputFilter($album->getInputFilter());
             $form->setData($request->getPost());
             if ($form->isValid()) {
-                $album->exchangeArray($form->getData());
+                $formData = $form->getData();
+                $album->setArtist($formData['artist']);
+                $album->setTitle($formData['title']);
                 $this->getEntityManager()->persist($album);
                 $this->getEntityManager()->flush();
                 // Redirect to list of albums
