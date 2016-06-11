@@ -7,7 +7,7 @@ use Application\Entity\Album;
 use Application\Form\AlbumForm;
 use Doctrine\ORM\EntityManager;
 
-class AlbumController extends AbstractActionController
+class IndexController extends AbstractActionController
 {
     protected $em;
     public function getEntityManager()
@@ -21,7 +21,7 @@ class AlbumController extends AbstractActionController
     public function indexAction()
     {
         return new ViewModel(array(
-            'albums' => $this->getEntityManager()->getRepository('Album\Entity\Album')->findAll(),
+            'albums' => $this->getEntityManager()->getRepository('Application\Entity\Album')->findAll(),
         ));
     }
     
