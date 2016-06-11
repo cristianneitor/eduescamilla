@@ -1,146 +1,97 @@
 <?php
-  
+
 namespace Application\Entity;
-  
+
 use Doctrine\ORM\Mapping as ORM;
-use Zend\InputFilter\InputFilter;
-use Zend\InputFilter\Factory as InputFactory;
-use Zend\InputFilter\InputFilterAwareInterface;
-use Zend\InputFilter\InputFilterInterface; 
-  
+
 /**
- * A music album.
+ * Album
  *
- * @ORM\Entity
  * @ORM\Table(name="album")
- * @property string $artist
- * @property string $title
- * @property int $id
+ * @ORM\Entity
  */
-class Album implements InputFilterAwareInterface 
+class Album
 {
-    protected $inputFilter;
-  
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer");
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    protected $id;
-  
+    private $id;
+
     /**
-     * @ORM\Column(type="string")
-     */
-    protected $artist;
-  
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $title;
-  
-    /**
-     * Magic getter to expose protected properties.
+     * @var string
      *
-     * @param string $property
-     * @return mixed
+     * @ORM\Column(name="artist", type="string", length=100)
      */
-    public function __get($property) 
-    {
-        return $this->$property;
-    }
-  
+    private $artist;
+
     /**
-     * Magic setter to save protected properties.
+     * @var string
      *
-     * @param string $property
-     * @param mixed $value
+     * @ORM\Column(name="title", type="string", length=100)
      */
-    public function __set($property, $value) 
-    {
-        $this->$property = $value;
-    }
-  
+    private $title;
+
+
     /**
-     * Convert the object to an array.
+     * Get id
      *
-     * @return array
+     * @return integer
      */
-    public function getArrayCopy() 
+    public function getId()
     {
-        return get_object_vars($this);
+        return $this->id;
     }
-  
+
     /**
-     * Populate from an array.
+     * Set artist
      *
-     * @param array $data
+     * @param string $artist
+     *
+     * @return Album
      */
-    public function exchangeArray($data = array()) 
+    public function setArtist($artist)
     {
-        $this->id = $data['id'];
-        $this->artist = $data['artist'];
-        $this->title = $data['title'];
+        $this->artist = $artist;
+
+        return $this;
     }
-  
-    public function setInputFilter(InputFilterInterface $inputFilter)
+
+    /**
+     * Get artist
+     *
+     * @return string
+     */
+    public function getArtist()
     {
-        throw new \Exception("Not used");
+        return $this->artist;
     }
-  
-    public function getInputFilter()
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Album
+     */
+    public function setTitle($title)
     {
-        if (!$this->inputFilter) {
-            $inputFilter = new InputFilter();
- 
-            $inputFilter->add(array(
-                'name'     => 'id',
-                'required' => true,
-                'filters'  => array(
-                    array('name' => 'Int'),
-                ),
-            ));
- 
-            $inputFilter->add(array(
-                'name'     => 'artist',
-                'required' => true,
-                'filters'  => array(
-                    array('name' => 'StripTags'),
-                    array('name' => 'StringTrim'),
-                ),
-                'validators' => array(
-                    array(
-                        'name'    => 'StringLength',
-                        'options' => array(
-                            'encoding' => 'UTF-8',
-                            'min'      => 1,
-                            'max'      => 100,
-                        ),
-                    ),
-                ),
-            ));
- 
-            $inputFilter->add(array(
-                'name'     => 'title',
-                'required' => true,
-                'filters'  => array(
-                    array('name' => 'StripTags'),
-                    array('name' => 'StringTrim'),
-                ),
-                'validators' => array(
-                    array(
-                        'name'    => 'StringLength',
-                        'options' => array(
-                            'encoding' => 'UTF-8',
-                            'min'      => 1,
-                            'max'      => 100,
-                        ),
-                    ),
-                ),
-            ));
- 
-            $this->inputFilter = $inputFilter;
-        }
- 
-        return $this->inputFilter;
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }
+
