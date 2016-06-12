@@ -1,5 +1,6 @@
 Application\Entity\Album:
   type: entity
+  repositoryClass: Application\Entity\AlbumRepository
   table: album
   id:
     id:
