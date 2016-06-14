@@ -1,5 +1,5 @@
 <?php
-namespace AlbumTest\Framework;
+namespace ApplicationTest\Framework;
 
 use PHPUnit_Framework_TestCase;
 use Doctrine\ORM\EntityManager;
