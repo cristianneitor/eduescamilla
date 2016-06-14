@@ -16,6 +16,6 @@
         "doctrine/doctrine-orm-module": "0.*",
         "bjyoungblood/bjy-profiler": "dev-master",
         "symfony/yaml": "dev-master",
-        "phpunit/phpunit": "5.4.*"
+        "phpunit/phpunit": "4.*"
     }
 }
