@@ -43,19 +43,12 @@ class Album
     private $company_id;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var string
      *
-     * @ORM\OneToMany(targetEntity="Application\Entity\Company", mappedBy="album")
+     * @ORM\Column(name="oneToMany", type="string")
      */
-    private $companies;
+    private $oneToMany;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->companies = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -140,37 +133,27 @@ class Album
     }
 
     /**
-     * Add company
+     * Set oneToMany
      *
-     * @param \Application\Entity\Company $company
+     * @param string $oneToMany
      *
      * @return Album
      */
-    public function addCompany(\Application\Entity\Company $company)
+    public function setOneToMany($oneToMany)
     {
-        $this->companies[] = $company;
+        $this->oneToMany = $oneToMany;
 
         return $this;
     }
 
     /**
-     * Remove company
+     * Get oneToMany
      *
-     * @param \Application\Entity\Company $company
+     * @return string
      */
-    public function removeCompany(\Application\Entity\Company $company)
+    public function getOneToMany()
     {
-        $this->companies->removeElement($company);
-    }
-
-    /**
-     * Get companies
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCompanies()
-    {
-        return $this->companies;
+        return $this->oneToMany;
     }
 }
 
