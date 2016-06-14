@@ -73,19 +73,19 @@ class Bootstrap
             throw new RuntimeException('Unable to load ZF2. Run `php composer.phar install` or define a ZF2_PATH environment variable.');
         }
 
-        //if (isset($loader)) {
-        $loader->add('Zend', $zf2Path . '/Zend');
-        // } else {
-        include $vendorPath . "/.." . $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
-        AutoloaderFactory::factory(array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'autoregister_zf' => true,
-                'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/' . __NAMESPACE__,
+        if (isset($loader)) {
+            $loader->add('Zend', $zf2Path . '/Zend');
+        } else {
+            include $vendorPath . "/.." . $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
+            AutoloaderFactory::factory(array(
+                'Zend\Loader\StandardAutoloader' => array(
+                    'autoregister_zf' => true,
+                    'namespaces' => array(
+                        __NAMESPACE__ => __DIR__ . '/' . __NAMESPACE__,
+                    ),
                 ),
-            ),
-        ));
-        //}
+            ));
+        }
     }
 
     public static function initDoctrine($serviceManager)
