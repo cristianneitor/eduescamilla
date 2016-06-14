@@ -7,7 +7,7 @@ use Doctrine\ORM\Tools\SchemaTool;
 use Doctrine\ORM\Tools\ToolsException;
 use Zend\ServiceManager\ServiceManager;
 
-class TestCase extends PHPUnit_Framework_TestCase
+class TestCaseDoctrine extends PHPUnit_Framework_TestCase
 {
     /**
     * @var ServiceManager

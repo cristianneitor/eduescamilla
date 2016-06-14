@@ -7,7 +7,7 @@ use Zend\ServiceManager\ServiceManager;
 use Zend\Stdlib\ArrayUtils;
 use RuntimeException;
 
-use ApplicationTest\Framework\TestCase;
+use ApplicationTest\Framework\TestCaseDoctrine;
 
 error_reporting(E_ALL | E_STRICT);
 chdir(__DIR__);
@@ -105,7 +105,7 @@ class Bootstrap
 
         $serviceManager->setService('Config', $config);
         $serviceManager->get('doctrine.entity_resolver.orm_default');
-        TestCase::setServiceManager($serviceManager);
+        TestCaseDoctrine::setServiceManager($serviceManager);
     }
 
     protected static function findParentPath($path)
