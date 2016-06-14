@@ -14,3 +14,9 @@ Application\Entity\Album:
     title:
       type: string
       length: 100
+    company_id:
+      type: integer
+    oneToMany:
+      companies:
+        targetEntity: Company
+        mappedBy: album
