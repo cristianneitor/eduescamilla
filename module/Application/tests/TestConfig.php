@@ -1,5 +1,5 @@
 <?php
-define('ZF2_PATH', getenv('HOME') . '/vendor/zendframework/zendframework/library');
+//define('ZF2_PATH', getenv('HOME') . '/vendor/zendframework/zendframework/library');
 
 return array(
     'modules' => array(
