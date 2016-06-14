@@ -35,20 +35,6 @@ class Album
      */
     private $title;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="company_id", type="integer")
-     */
-    private $company_id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="oneToMany", type="string")
-     */
-    private $oneToMany;
-
 
     /**
      * Get id
@@ -106,54 +92,6 @@ class Album
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set companyId
-     *
-     * @param integer $companyId
-     *
-     * @return Album
-     */
-    public function setCompanyId($companyId)
-    {
-        $this->company_id = $companyId;
-
-        return $this;
-    }
-
-    /**
-     * Get companyId
-     *
-     * @return integer
-     */
-    public function getCompanyId()
-    {
-        return $this->company_id;
-    }
-
-    /**
-     * Set oneToMany
-     *
-     * @param string $oneToMany
-     *
-     * @return Album
-     */
-    public function setOneToMany($oneToMany)
-    {
-        $this->oneToMany = $oneToMany;
-
-        return $this;
-    }
-
-    /**
-     * Get oneToMany
-     *
-     * @return string
-     */
-    public function getOneToMany()
-    {
-        return $this->oneToMany;
     }
 }
 
