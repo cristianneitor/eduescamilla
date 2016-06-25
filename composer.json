@@ -12,11 +12,11 @@
         "zendframework/zendframework": "~2.5",
         "zendframework/zend-developer-tools": "dev-master",
         "zendframework/zftool": "dev-master",
+        "zendframework/zendpdf": "*",
+        "zf-commons/zfc-user": "1.4.4",
         "doctrine/doctrine-module": "0.*",
         "doctrine/doctrine-orm-module": "0.*",
         "bjyoungblood/bjy-profiler": "dev-master",
-        "symfony/yaml": "dev-master",
-        "phpunit/phpunit": "~3.7",
-        "zf-commons/zfc-user": "1.4.4"
+        "symfony/yaml": "dev-master"
     }
 }
