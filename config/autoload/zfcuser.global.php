@@ -30,7 +30,7 @@ $settings = array(
      *
      * Accepted values: boolean true or false
      */
-    //'enable_registration' => true,
+    'enable_registration' => true,
 
     /**
      * Enable Username
@@ -40,7 +40,7 @@ $settings = array(
      *
      * Accepted values: boolean true or false
      */
-    //'enable_username' => false,
+    'enable_username' => false,
 
     /**     
      * Authentication Adapters
@@ -60,7 +60,7 @@ $settings = array(
      *
      * Accepted values: boolean true or false
      */
-    //'enable_display_name' => true,
+    'enable_display_name' => true,
 
     /**
      * Modes for authentication identity match
@@ -81,7 +81,7 @@ $settings = array(
      *
      * Accepted values: positive int value
      */
-    //'login_form_timeout' => 300,
+    'login_form_timeout' => 300,
 
     /**
      * Registration form timeout
@@ -91,7 +91,7 @@ $settings = array(
      *
      * Accepted values: positive int value
      */
-    //'user_form_timeout' => 300,
+    'user_form_timeout' => 300,
 
     /**
      * Login After Registration
@@ -101,7 +101,7 @@ $settings = array(
      *
      * Accepted values: boolean true or false
      */
-    //'login_after_registration' => true,
+    'login_after_registration' => true,
 
     /**
      * Registration Form Captcha
