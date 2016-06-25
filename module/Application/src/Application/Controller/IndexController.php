@@ -1,4 +1,5 @@
 <?php
+
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
@@ -6,22 +7,22 @@ use Zend\View\Model\ViewModel;
 use Application\Entity\Album;
 use Application\Form\AlbumForm;
 use Doctrine\ORM\EntityManager;
+use DOMPDFModule\View\Model\PdfModel;
 
-class IndexController extends AbstractActionController
-{
+class IndexController extends AbstractActionController {
+
     protected $em;
-    public function getEntityManager()
-    {
+
+    public function getEntityManager() {
         if (null === $this->em) {
             $this->em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
         }
         return $this->em;
     }
-    
-    public function indexAction()
-    {
+
+    public function indexAction() {
         $viewModel = new ViewModel();
-        
+
         try {
             $albumEntity = $this->getEntityManager()->getRepository('Application\Entity\Album');
             $albums = $albumEntity->findAll();
@@ -29,12 +30,11 @@ class IndexController extends AbstractActionController
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
-        
+
         return $viewModel;
     }
-    
-    public function addAction()
-    {
+
+    public function addAction() {
         $form = new AlbumForm();
         $form->get('submit')->setValue('Add');
         $request = $this->getRequest();
@@ -51,25 +51,24 @@ class IndexController extends AbstractActionController
                 return $this->redirect()->toRoute('home');
             }
         }
-        
+
         return array('form' => $form);
     }
-    
-    public function editAction()
-    {
+
+    public function editAction() {
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
             return $this->redirect()->toRoute('album', array(
-                'action' => 'add'
+                        'action' => 'add'
             ));
         }
         $album = $this->getEntityManager()->find('Album\Entity\Album', $id);
         if (!$album) {
             return $this->redirect()->toRoute('album', array(
-                'action' => 'index'
+                        'action' => 'index'
             ));
         }
-        $form  = new AlbumForm();
+        $form = new AlbumForm();
         $form->bind($album);
         $form->get('submit')->setAttribute('value', 'Edit');
         $request = $this->getRequest();
@@ -87,8 +86,8 @@ class IndexController extends AbstractActionController
             'form' => $form,
         );
     }
-    public function deleteAction()
-    {
+
+    public function deleteAction() {
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
             return $this->redirect()->toRoute('album');
@@ -108,8 +107,31 @@ class IndexController extends AbstractActionController
             return $this->redirect()->toRoute('album');
         }
         return array(
-            'id'    => $id,
+            'id' => $id,
             'album' => $this->getEntityManager()->find('Application\Entity\Album', $id)
         );
     }
+
+    public function pdfAction() {
+        // Instantiate new PDF Model
+        $pdf = new PdfModel();
+
+        // set filename
+        $pdf->setOption('filename', 'hello.pdf');
+
+        // Defaults to "8x11"
+        $pdf->setOption('paperSize', 'a4');
+
+        // paper orientation
+        $pdf->setOption('paperOrientation', 'portrait');
+
+        $pdf->setVariables(array(
+            'var1' => 'Liverpool FC',
+            'var2' => 'Atletico Madrid',
+            'var3' => 'Borussia Dortmund'
+        ));
+
+        return $pdf;
+    }
+
 }

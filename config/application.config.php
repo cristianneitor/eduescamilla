@@ -13,6 +13,7 @@ return array(
         'DoctrineORMModule',
         'ZfcUser',
         'ZfcUserDoctrineORM',
+        'DOMPDFModule',
         'Application',
         'Sipp'
     ),
