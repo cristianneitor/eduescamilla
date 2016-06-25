@@ -12,6 +12,7 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'ZfcUser',
+        'ZfcUserDoctrineORM',
         'Application',
         'Sipp'
     ),
