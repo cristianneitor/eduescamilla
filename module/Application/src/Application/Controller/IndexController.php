@@ -117,7 +117,10 @@ class IndexController extends AbstractActionController {
         $pdf = new PdfModel();
 
         // set filename
-        $pdf->setOption('filename', 'hello.pdf');
+        //$pdf->setOption('filename', 'hello.pdf');
+        
+        $pdf->setOption("basePath", __DIR__ . '/../../../../../public');
+        // "/var/www/eduescamilla.com/eduescamilla/public"
 
         // Defaults to "8x11"
         $pdf->setOption('paperSize', 'a4');
@@ -133,5 +136,9 @@ class IndexController extends AbstractActionController {
 
         return $pdf;
     }
-
+    
+    public function adminAction() {
+        $viewModel = new ViewModel();
+        return $viewModel;
+    }
 }
