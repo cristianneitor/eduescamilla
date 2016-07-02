@@ -1,0 +1,16 @@
+<div class="row">
+    Agregar empleado
+</div>
+<div class="row">
+    <?php
+        $form->prepare();
+        echo $this->form()->openTag($form);
+        echo $this->formCollection($form);
+        echo $this->form()->closeTag();
+    ?>
+</div>
+<?php if (isset($this->message)): ?>
+<div class="row">
+    <?php echo $this->message; ?>
+</div>
+<?php endif; ?>

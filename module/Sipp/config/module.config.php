@@ -3,6 +3,8 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Sipp\Controller\Index' => 'Sipp\Controller\IndexController',
+            'Sipp\Controller\Company' => 'Sipp\Controller\CompanyController',
+            'Sipp\Controller\Employee' => 'Sipp\Controller\EmployeeController',
         ),
     ),
     'router' => array(
@@ -38,6 +40,18 @@ return array(
                             ),
                         ),
                     ),
+                    'crud_entities' => array(
+                        'type'    => 'segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:action][/:id]]',
+                            'constraints' => array(
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id'     => '[0-9]+',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
                 ),
             ),
         ),
@@ -47,4 +61,20 @@ return array(
             'Sipp' => __DIR__ . '/../view',
         ),
     ),
+    // Doctrine config
+    'doctrine' => array(
+        'driver' => array(
+            'SippYamlDriver' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\YamlDriver',
+                'cache' => 'array',
+                'extension' => '.dcm.yml',
+                'paths' => array(__DIR__ . '/yml')
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                    'Sipp\Entity' => 'SippYamlDriver',
+                )
+            )
+        )
+    )
 );

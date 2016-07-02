@@ -1,4 +1,4 @@
-Application\Entity\Company:
+Sipp\Entity\Company:
   type: entity
   table: company
   id:
@@ -10,6 +10,6 @@ Application\Entity\Company:
     name:
       type: string
       length: 100
-    country:
+    code:
       type: string
       length: 100

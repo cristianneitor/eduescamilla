@@ -1,0 +1,21 @@
+Sipp\Entity\Employee:
+  type: entity
+  repositoryClass: Application\Entity\EmployeeRepository
+  table: employee
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    user_id:
+      type: integer
+    company_code:
+      type: string
+      length: 100
+    state:
+      type: integer
+  oneToMany:
+    companies:
+      targetEntity: Company
+      mappedBy: employee
