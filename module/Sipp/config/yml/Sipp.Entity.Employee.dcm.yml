@@ -1,6 +1,5 @@
 Sipp\Entity\Employee:
   type: entity
-  repositoryClass: Application\Entity\EmployeeRepository
   table: employee
   id:
     id:

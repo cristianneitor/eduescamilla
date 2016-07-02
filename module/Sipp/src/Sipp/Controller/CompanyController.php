@@ -7,7 +7,7 @@ use Zend\View\Model\ViewModel;
 use Sipp\Entity\Company;
 use Sipp\Form\CompanyForm;
 
-class SippController extends AbstractActionController {
+class CompanyController extends AbstractActionController {
 
     protected $em;
 
