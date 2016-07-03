@@ -41,7 +41,7 @@ class EmployeeController extends AbstractActionController {
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 $formData = $form->getData();
-                $employee->setUderId($formData['user_id']);
+                $employee->setUserId($formData['user_id']);
                 $employee->setCompanyCode($formData['company_code']);
                 $employee->setState($formData['state']);
                 $this->getEntityManager()->persist($employee);
@@ -61,7 +61,7 @@ class EmployeeController extends AbstractActionController {
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
             return $this->redirect()->toRoute('sipp/crud_entities', [
-                        'controller' => 'Employee',
+                        'controller' => 'employee',
                         'action' => 'add'
             ]);
         }

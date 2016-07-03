@@ -6,3 +6,29 @@
     <?php echo $this->message; ?>
 </div>
 <?php endif; ?>
+<?php
+    $title = 'Borrar empleado';
+    $this->headTitle($title);
+?>
+<div class="row">
+    <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+    <p>¿Está seguro de borrar el empleado
+         '<?php echo $this->escapeHtml($this->employee->getCompanyCode()); ?>' de
+         '<?php echo $this->escapeHtml($this->employee->getState()); ?>'?
+    </p>
+    <?php
+        $url = $this->url('sipp/crud_entities', array(
+             'controller' => 'employee',
+             'action' => 'delete',
+             'id'     => $this->id,
+    ));
+    ?>
+    <form action="<?php echo $url; ?>" method="post">
+        <div>
+            <input type="hidden" name="id" value="<?php echo $this->employee->getId(); ?>" />
+            <input type="submit" name="del" value="Yes" />
+            <input type="submit" name="del" value="No" />
+        </div>
+    </form>
+ </div>

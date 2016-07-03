@@ -13,3 +13,12 @@ Sipp\Entity\Company:
     code:
       type: string
       length: 100
+    state:
+      type: integer
+  oneToOne:
+    companyCode:
+      targetEntity: Employee
+      joinColumn:
+        name: company_code
+        referencedColumnName: code
+        onDelete: CASCADE

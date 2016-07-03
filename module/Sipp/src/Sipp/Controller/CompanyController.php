@@ -61,14 +61,14 @@ class CompanyController extends AbstractActionController {
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
             return $this->redirect()->toRoute('sipp/crud_entities', [
-                        'controller' => 'Company',
+                        'controller' => 'company',
                         'action' => 'add'
             ]);
         }
         $company = $this->getEntityManager()->find('Sipp\Entity\Company', $id);
         if (!$company) {
             return $this->redirect()->toRoute('sipp/crud_entities', [
-                        'controller' => 'Company',
+                        'controller' => 'company',
                         'action' => 'index'
             ]);
         }
@@ -118,7 +118,7 @@ class CompanyController extends AbstractActionController {
         }
         return array(
             'id' => $id,
-            'album' => $this->getEntityManager()->find('Sipp\Entity\Company', $id)
+            'company' => $this->getEntityManager()->find('Sipp\Entity\Company', $id)
         );
     }
 }

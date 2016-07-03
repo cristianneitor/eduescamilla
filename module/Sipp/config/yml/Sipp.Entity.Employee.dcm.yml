@@ -14,7 +14,3 @@ Sipp\Entity\Employee:
       length: 100
     state:
       type: integer
-  oneToMany:
-    companies:
-      targetEntity: Company
-      mappedBy: employee
