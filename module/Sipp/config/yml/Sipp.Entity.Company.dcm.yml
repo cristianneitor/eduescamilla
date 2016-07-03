@@ -15,8 +15,8 @@ Sipp\Entity\Company:
       length: 100
     state:
       type: integer
-  oneToOne:
-    companyCode:
+  oneToMany:
+    employees:
       targetEntity: Employee
       joinColumn:
         name: company_code

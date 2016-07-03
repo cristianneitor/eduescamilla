@@ -6,33 +6,23 @@
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
-    <div class="row">
-        <div class="col-lg-3 col-md-6">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <div class="row">
-                        Lista de empleados registrados
-                        <div class="col-xs-9 text-right">
-                            <table class="table">
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Id de usuario</th>
-                                    <th>Código de la compañía</th>
-                                    <th>Estado</th>
-                                </tr>
-                                <?php foreach ($this->employees as $employee) : ?>
-                                    <tr>
-                                        <td><?php echo $this->escapeHtml($employee->getId()); ?></td>
-                                        <td><?php echo $this->escapeHtml($employee->getUserId()); ?></td>
-                                        <td><?php echo $this->escapeHtml($employee->getCompanyCode()); ?></td>
-                                        <td><?php echo $this->escapeHtml($employee->getState()); ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="panel panel-green">
+        <div class="panel-heading">
+            Lista de empleados
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <tr>
+                    <th>Código</th>
+                    <th>Estado</th>
+                </tr>
+                <?php foreach ($this->employees as $employee) : ?>
+                    <tr>
+                        <td><?php echo $this->escapeHtml($employee->getCompanyCode()); ?></td>
+                        <td><?php echo $this->escapeHtml($employee->getStatus()); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
         </div>
     </div>
     <!-- /.row -->

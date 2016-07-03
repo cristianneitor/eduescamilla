@@ -6,30 +6,23 @@
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
-    <div class="row">
-        <div class="col-lg-3 col-md-6">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <div class="row">
-                        Lista de empresas registradas
-                        <div class="col-xs-9 text-right">
-                            <table class="table">
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Nombre</th>
-                                    <th>&nbsp;</th>
-                                </tr>
-                                <?php foreach ($this->companies as $company) : ?>
-                                    <tr>
-                                        <td><?php echo $this->escapeHtml($company->getId()); ?></td>
-                                        <td><?php echo $this->escapeHtml($company->getName()); ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="panel panel-green">
+        <div class="panel-heading">
+            Lista de empresas registradas
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                </tr>
+                <?php foreach ($this->companies as $company) : ?>
+                    <tr>
+                        <td><?php echo $this->escapeHtml($company->getId()); ?></td>
+                        <td><?php echo $this->escapeHtml($company->getName()); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
         </div>
     </div>
     <!-- /.row -->
