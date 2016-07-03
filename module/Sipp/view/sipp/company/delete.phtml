@@ -14,8 +14,8 @@
     <h1><?php echo $this->escapeHtml($title); ?></h1>
 
     <p>¿Está seguro de borrar la empresa
-         '<?php echo $this->escapeHtml($this->employee->getName()); ?>' de
-         '<?php echo $this->escapeHtml($this->employee->getState()); ?>'?
+         '<?php echo $this->escapeHtml($this->company->getName()); ?>' de
+         '<?php echo $this->escapeHtml($this->company->getCode()); ?>'?
     </p>
     <?php
         $url = $this->url('sipp/crud_entities', array(
