@@ -18,6 +18,7 @@ Sipp\Entity\Company:
   oneToMany:
     employees:
       targetEntity: Employee
+      mappedBy: company
       joinColumn:
         name: company_code
         referencedColumnName: code
