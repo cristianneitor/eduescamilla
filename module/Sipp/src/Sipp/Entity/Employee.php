@@ -42,20 +42,6 @@ class Employee
      */
     private $state;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\OneToMany(targetEntity="Sipp\Entity\Company", mappedBy="employee")
-     */
-    private $companies;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->companies = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -137,40 +123,6 @@ class Employee
     public function getState()
     {
         return $this->state;
-    }
-
-    /**
-     * Add company
-     *
-     * @param \Sipp\Entity\Company $company
-     *
-     * @return Employee
-     */
-    public function addCompany(\Sipp\Entity\Company $company)
-    {
-        $this->companies[] = $company;
-
-        return $this;
-    }
-
-    /**
-     * Remove company
-     *
-     * @param \Sipp\Entity\Company $company
-     */
-    public function removeCompany(\Sipp\Entity\Company $company)
-    {
-        $this->companies->removeElement($company);
-    }
-
-    /**
-     * Get companies
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCompanies()
-    {
-        return $this->companies;
     }
 }
 
