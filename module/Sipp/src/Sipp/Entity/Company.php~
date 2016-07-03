@@ -35,6 +35,23 @@ class Company
      */
     private $code;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="state", type="integer")
+     */
+    private $state;
+
+    /**
+     * @var \Sipp\Entity\Employee
+     *
+     * @ORM\OneToOne(targetEntity="Sipp\Entity\Employee")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="company_code", referencedColumnName="code", unique=true, onDelete="CASCADE")
+     * })
+     */
+    private $companyCode;
+
 
     /**
      * Get id
@@ -92,6 +109,54 @@ class Company
     public function getCode()
     {
         return $this->code;
+    }
+
+    /**
+     * Set state
+     *
+     * @param integer $state
+     *
+     * @return Company
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * Get state
+     *
+     * @return integer
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * Set companyCode
+     *
+     * @param \Sipp\Entity\Employee $companyCode
+     *
+     * @return Company
+     */
+    public function setCompanyCode(\Sipp\Entity\Employee $companyCode = null)
+    {
+        $this->companyCode = $companyCode;
+
+        return $this;
+    }
+
+    /**
+     * Get companyCode
+     *
+     * @return \Sipp\Entity\Employee
+     */
+    public function getCompanyCode()
+    {
+        return $this->companyCode;
     }
 }
 

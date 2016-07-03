@@ -43,15 +43,19 @@ class Company
     private $state;
 
     /**
-     * @var \Sipp\Entity\Employee
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToOne(targetEntity="Sipp\Entity\Employee")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="company_code", referencedColumnName="code", unique=true, onDelete="CASCADE")
-     * })
+     * @ORM\OneToMany(targetEntity="Sipp\Entity\Employee", mappedBy="company")
      */
-    private $companyCode;
+    private $employees;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->employees = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -136,27 +140,37 @@ class Company
     }
 
     /**
-     * Set companyCode
+     * Add employee
      *
-     * @param \Sipp\Entity\Employee $companyCode
+     * @param \Sipp\Entity\Employee $employee
      *
      * @return Company
      */
-    public function setCompanyCode(\Sipp\Entity\Employee $companyCode = null)
+    public function addEmployee(\Sipp\Entity\Employee $employee)
     {
-        $this->companyCode = $companyCode;
+        $this->employees[] = $employee;
 
         return $this;
     }
 
     /**
-     * Get companyCode
+     * Remove employee
      *
-     * @return \Sipp\Entity\Employee
+     * @param \Sipp\Entity\Employee $employee
      */
-    public function getCompanyCode()
+    public function removeEmployee(\Sipp\Entity\Employee $employee)
     {
-        return $this->companyCode;
+        $this->employees->removeElement($employee);
+    }
+
+    /**
+     * Get employees
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEmployees()
+    {
+        return $this->employees;
     }
 }
 
