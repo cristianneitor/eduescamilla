@@ -1,0 +1,10 @@
+<div style="float:left; padding-right:16px;">
+    <?php echo $this->gravatar($this->zfcUserIdentity()->getEmail()) ?>
+</div>
+<h3>
+    Hola, ¡<?php echo $this->zfcUserDisplayName() ?>!
+</h3>
+<a href="<?php echo $this->url('zfcuser/logout') ?>">
+    [Salir]
+</a>
+<div style="clear:both;"></div>
