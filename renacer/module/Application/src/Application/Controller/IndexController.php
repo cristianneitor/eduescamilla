@@ -16,6 +16,26 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+                
+        // Setup SMTP transport using PLAIN authentication over TLS
+        $config = array(
+            'ssl' => 'tls', 
+            'port' => '587', 
+            'auth' => 'login', 
+            'username' => 'convencion@renacercolombia.com', 
+            'password' => ''
+        );
+        
+        $transport = new Zend\Mail\Transport\Smtp('smtp.gmail.com', $config);
+
+        $mail = new Zend\Mail\Message();
+        $mail->setBodyText('This is the text of the mail.');
+        $mail->setFrom('convencion@renacercolombia.com', 'Convención Renacer');
+        $mail->addTo('eescamillap@hotmail.com', 'Eduardo');
+        $mail->setSubject('Prueba de emails');
+        $mail->send($transport);
+        
+        
         return new ViewModel();
     }
 }
